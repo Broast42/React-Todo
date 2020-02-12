@@ -5,7 +5,7 @@ const TodoList = props => {
     return(
         <div>
             {props.toDos.map((x,i)=>(
-                <Todo key={i} toDos={x} />   
+                <Todo key={i} toDos={x} toggle={props.toggle}/>   
             ))}
         </div>
     );
