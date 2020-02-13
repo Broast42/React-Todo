@@ -15,7 +15,7 @@ const Button = styled.button`
     border: 1px solid black;
     border-radius: 5px;
     box-shadow: 0 1px 0 grey;
-    margin-left: 5px;
+    margin: 0 5px;
 
     &:hover{
         background: #d6f5f5;
@@ -29,6 +29,10 @@ const ButtonRed = styled(Button)`
     &:hover{
         background: #ffd6cc; 
     }
+`;
+
+const Flex = styled.div`
+    display: flex;
 `;
 
 class TodoForm extends React.Component {
@@ -59,7 +63,7 @@ class TodoForm extends React.Component {
     }
 
     render(){
-        
+    
         return(
             <FlexForm>
                 <ButtonRed onClick={() => this.props.clear()}>Clear Completed</ButtonRed>
@@ -67,10 +71,14 @@ class TodoForm extends React.Component {
                     <input type="text" name="item" onChange={this.handleChange}/>
                     <Button type="submit">Add a Task</Button>
                 </form>
-                <form onSubmit={this.submitSearch}>
-                    <input type="text" name="search" onChange={this.handleChange} />
-                    <Button type="submit">Search Tasks</Button>
-                </form>     
+                <Flex>
+                    <form onSubmit={this.submitSearch}>
+                        <input type="text" name="search" onChange={this.handleChange} />
+                        <Button type="submit">Search Tasks</Button>
+                    </form> 
+                    <ButtonRed onClick={() => this.props.clearSearch()}>Clear Search</ButtonRed> 
+                </Flex>
+                   
             </FlexForm>
             
         );
